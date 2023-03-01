@@ -3,10 +3,10 @@
 There were several support requests opened about build slowness, especially by users who are migrating from OCP 3.11 to 4.x. This article provides the workaround/actions can be taken by the users to improve the build performance and help the builds run faster:
 
 ## a) Remove/disable the Dynatrace OneAgent operator:
-Some customers run the Dynatrace OneAgent operator on their clusters. OneAgent by default enables automatic "deep" monitoring of all processes, which causes the performance of OpenShift Builds to degrade significantly [1]. Any fix to address the performance degradation would need to be provided by Dynatrace (in partnership with Red Hat if necessary).
+Some customers run the Dynatrace OneAgent operator on their clusters. OneAgent by default enables automatic "deep" monitoring of all processes, which causes the performance of OpenShift Builds to degrade significantly (1). Any fix to address the performance degradation would need to be provided by Dynatrace (in partnership with Red Hat if necessary).
 
 ###### Workaround:
-OpenShift admins/users who install Dynatrace OneAgent can configure Dynatrace to exclude deep monitoring of certain workloads [2]. Admins can add a monitoring rule to disable the process monitor for the OpenShift-Build process which excludes all OpenShift Builds, if that is desired.
+OpenShift admins/users who install Dynatrace OneAgent can configure Dynatrace to exclude deep monitoring of certain workloads (2). Admins can add a monitoring rule to disable the process monitor for the OpenShift-Build process which excludes all OpenShift Builds, if that is desired.
 
 #### Admins can also use Tolerations and Node Selectors to isolate Builds from nodes that run Dynatrace OneAgent. This could be accomplished as follows:
 
@@ -21,7 +21,7 @@ OpenShift admins/users who install Dynatrace OneAgent can configure Dynatrace to
   
     $ oc label node <worker-node> build-node=true
 
-2. Alternatively, add or update the labels and taints on a MachineSet [3]
+2. Alternatively, add or update the labels and taints on a MachineSet (3)
 
   apiVersion: machine.openshift.io/v1beta1
   kind: MachineSet
@@ -41,7 +41,7 @@ OpenShift admins/users who install Dynatrace OneAgent can configure Dynatrace to
         key: build-node
         value: "true"
 
-3. Set up a cluster-wide BuildOverride that allows builds to tolerate the "build-node" taint and forces builds onto the labeled build-nodes [4].
+3. Set up a cluster-wide BuildOverride that allows builds to tolerate the "build-node" taint and forces builds onto the labeled build-nodes (4).
 
 $ oc edit build.config.openshift.io/cluster
 
@@ -56,7 +56,10 @@ spec:
 4. Deploy Dynatrace OneAgent via Operator Hub. The agents will not tolerate the custom "build-node" taint by default and therefore will not run on these nodes.
 ```
 
-[https://access.redhat.com/solutions/4978291]
+(1) [https://access.redhat.com/solutions/4978291]
+(2) [https://www.dynatrace.com/support/help/shortlink/process-group-monitoring#enable-automatic-deep-monitoring]
+(3) [https://docs.openshift.com/container-platform/4.7/machine_management/creating_machinesets/creating-machineset-aws.html]
+(4) [https://docs.openshift.com/container-platform/4.7/cicd/builds/build-configuration.html]
 
 ## b) Increase the memory allocated to the build such that it is about equal to the base image size:
 Sometimes when the user has default resource limits set, it may lead to cpu/memory constraints when the builds run. To overcome this, the user can set resource requirements on builds and increase the requests and limits to check if the performance and time of the builds are improved.
