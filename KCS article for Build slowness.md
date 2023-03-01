@@ -5,7 +5,7 @@ There were several support requests opened about build slowness, especially by u
 ## a) Remove/disable the Dynatrace OneAgent operator:
 Some customers run the Dynatrace OneAgent operator on their clusters. OneAgent by default enables automatic "deep" monitoring of all processes, which causes the performance of OpenShift Builds to degrade significantly. Any fix to address the performance degradation would need to be provided by Dynatrace (in partnership with Red Hat if necessary).
 
-###### <ins>Workaround:</ins>
+###### Workaround:
 OpenShift admins/users who install Dynatrace OneAgent can configure Dynatrace to exclude deep monitoring of certain workloads. Admins can add a monitoring rule to disable the process monitor for the OpenShift-Build process which excludes all OpenShift Builds, if that is desired.
 
 #### Admins can also use Tolerations and Node Selectors to isolate Builds from nodes that run Dynatrace OneAgent. This could be accomplished as follows:
