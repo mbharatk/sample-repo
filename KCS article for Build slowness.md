@@ -56,13 +56,13 @@ spec:
 4. Deploy Dynatrace OneAgent via Operator Hub. The agents will not tolerate the custom "build-node" taint by default and therefore will not run on these nodes.
 ```
 
-(1) [https://access.redhat.com/solutions/4978291]
+(1) https://access.redhat.com/solutions/4978291
 
-(2) [https://www.dynatrace.com/support/help/shortlink/process-group-monitoring#enable-automatic-deep-monitoring]
+(2) https://www.dynatrace.com/support/help/shortlink/process-group-monitoring#enable-automatic-deep-monitoring
 
-(3) [https://docs.openshift.com/container-platform/4.7/machine_management/creating_machinesets/creating-machineset-aws.html]
+(3) https://docs.openshift.com/container-platform/4.7/machine_management/creating_machinesets/creating-machineset-aws.html
 
-(4) [https://docs.openshift.com/container-platform/4.7/cicd/builds/build-configuration.html]
+(4) https://docs.openshift.com/container-platform/4.7/cicd/builds/build-configuration.html
 
 ## b) Increase the memory allocated to the build such that it is about equal to the base image size:
 Sometimes when the user has default resource limits set, it may lead to cpu/memory constraints when the builds run. To overcome this, the user can set resource requirements on builds and increase the requests and limits to check if the performance and time of the builds are improved.
