@@ -56,7 +56,7 @@ spec:
 4. Deploy Dynatrace OneAgent via Operator Hub. The agents will not tolerate the custom "build-node" taint by default and therefore will not run on these nodes.
 ```
 
-(1) https://access.redhat.com/solutions/4978291
+[1] https://access.redhat.com/solutions/4978291
 
 (2) https://www.dynatrace.com/support/help/shortlink/process-group-monitoring#enable-automatic-deep-monitoring
 
