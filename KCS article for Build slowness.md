@@ -57,8 +57,11 @@ spec:
 ```
 
 (1) [https://access.redhat.com/solutions/4978291]
+
 (2) [https://www.dynatrace.com/support/help/shortlink/process-group-monitoring#enable-automatic-deep-monitoring]
+
 (3) [https://docs.openshift.com/container-platform/4.7/machine_management/creating_machinesets/creating-machineset-aws.html]
+
 (4) [https://docs.openshift.com/container-platform/4.7/cicd/builds/build-configuration.html]
 
 ## b) Increase the memory allocated to the build such that it is about equal to the base image size:
