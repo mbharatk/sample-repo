@@ -41,7 +41,7 @@ OpenShift admins/users who install Dynatrace OneAgent can configure Dynatrace to
         key: build-node
         value: "true"
 
-3. Set up a cluster-wide BuildOverride that allows builds to tolerate the "build-node" taint and forces builds onto the labeled build-nodes [4].
+3. Set up a cluster-wide BuildOverride that allows builds to tolerate the "build-node" taint and forces builds onto the labeled build-nodes.
 
 $ oc edit build.config.openshift.io/cluster
 
