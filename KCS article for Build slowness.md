@@ -70,4 +70,6 @@ Sometimes when the user has default resource limits set, it may lead to cpu/memo
 Support team should work with the user to investiagte the reason for the consumption of cpu/memory and determine a minimal resource the customer builds require to get sufficient performance.
 
 ## c) Upgrade to OCP 4.9 or higher
+Upgrading to newer or higher versions can help with the improvement of builds performance.
+
 
